@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.fillText('Waiting for data...', canvas.width / 2, canvas.height / 2);
 
 
-    const socket = new WebSocket(`wss://${window.location.host}/api/proxy`);
+    const socket = new WebSocket(`wss://${window.location.host}/ws`);
 
     socket.onopen = () => {
         statusIndicator.textContent = 'Status: Connected';
