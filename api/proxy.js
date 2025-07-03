@@ -196,6 +196,8 @@ async function handleChartConnection(socket) {
 
 // --- 部分 3: Vercel Serverless Function 主入口 ---
 export default async function handler(request) {
+    console.log(`[LOG] Incoming request: ${request.method} ${request.url}`);
+    console.log('[LOG] Request headers:', JSON.stringify(Object.fromEntries(request.headers.entries()), null, 2));
     const upgradeHeader = request.headers.get('Upgrade');
 
     // 路由 1: 处理 WebSocket 代理请求
@@ -205,6 +207,7 @@ export default async function handler(request) {
             handleChartConnection(socket);
             return response;
         } catch (error) {
+            console.error('[ERROR] An error occurred in the handler:', error);
             console.error("WebSocket upgrade failed:", error);
             return new Response("WebSocket upgrade failed", { status: 400 });
         }
