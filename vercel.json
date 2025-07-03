@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "api/proxy.js",
-      "use": "@vercel/deno"
+      "use": "vercel-deno"
     }
   ],
   "routes": [
