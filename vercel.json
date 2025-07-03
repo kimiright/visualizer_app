@@ -1,0 +1,21 @@
+{
+  "builds": [
+    {
+      "src": "api/proxy.js",
+      "use": "@vercel/deno"
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/api/proxy",
+      "dest": "/api/proxy.js"
+    },
+    {
+      "src": "/((?!api/|css/|js/).*)",
+      "dest": "/public/index.html"
+    }
+  ]
+}
