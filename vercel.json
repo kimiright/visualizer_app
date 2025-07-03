@@ -7,15 +7,12 @@
   ],
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/api/proxy",
+      "src": "/api/(.*)",
       "dest": "/api/proxy.js"
     },
     {
-      "src": "/((?!api/|css/|js/).*)",
-      "dest": "/public/index.html"
+      "src": "/(.*)",
+      "dest": "/public/$1"
     }
   ]
 }
